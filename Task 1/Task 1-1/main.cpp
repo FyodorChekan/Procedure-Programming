@@ -6,26 +6,26 @@
 using namespace std;
 
 /*
-* \brief Находит значение a
-* \param x Значение x
-* \param y Значение z
-* \param z Значение y
-* \return Значение a
+* \brief РќР°С…РѕРґРёС‚ Р·РЅР°С‡РµРЅРёРµ a
+* \param x Р—РЅР°С‡РµРЅРёРµ x
+* \param y Р—РЅР°С‡РµРЅРёРµ z
+* \param z Р—РЅР°С‡РµРЅРёРµ y
+* \return Р—РЅР°С‡РµРЅРёРµ a
 */
 double getA(const double x, const double y, const double z);
 
 /*
-* \brief Находит значение b
-* \param x Значение y
-* \param y Значение x
-* \param z Значение z
-* \return Значение b
+* \brief РќР°С…РѕРґРёС‚ Р·РЅР°С‡РµРЅРёРµ b
+* \param x Р—РЅР°С‡РµРЅРёРµ y
+* \param y Р—РЅР°С‡РµРЅРёРµ x
+* \param z Р—РЅР°С‡РµРЅРёРµ z
+* \return Р—РЅР°С‡РµРЅРёРµ b
 */
 double getB(const double x, const double y, const double z);
 
 /*
-* \brief Вход в программу
-* \return в случае успеха, возвращает 0
+* \brief Р’С…РѕРґ РІ РїСЂРѕРіСЂР°РјРјСѓ
+* \return РІ СЃР»СѓС‡Р°Рµ СѓСЃРїРµС…Р°, РІРѕР·РІСЂР°С‰Р°РµС‚ 0
 */
 
 int main()
