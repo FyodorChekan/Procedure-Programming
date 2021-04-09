@@ -7,61 +7,65 @@
 using namespace std;
 
 /*
-* \brief Находит третью сторону треугольника
-* \param FirstSide Длина первой стороны треугольника
-* \param SecondSide Длина второй стороны треугольника
-* \param z Угол между этими сторонами
-* \return Длина третьей стороны треугольника
+* \brief РќР°С…РѕРґРёС‚ С‚СЂРµС‚СЊСЋ СЃС‚РѕСЂРѕРЅСѓ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°
+* \param FirstSide Р”Р»РёРЅР° РїРµСЂРІРѕР№ СЃС‚РѕСЂРѕРЅС‹ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°
+* \param SecondSide Р”Р»РёРЅР° РІС‚РѕСЂРѕР№ СЃС‚РѕСЂРѕРЅС‹ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°
+* \param z РЈРіРѕР» РјРµР¶РґСѓ СЌС‚РёРјРё СЃС‚РѕСЂРѕРЅР°РјРё
+* \return Р”Р»РёРЅР° С‚СЂРµС‚СЊРµР№ СЃС‚РѕСЂРѕРЅС‹ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°
 */
 double getThirdSideOfTheTriangle(double FirstSide, double SecondSide, double z);
 
 /*
-* \brief Находит площадь треугольника
-* \param FirstSide Длина первой стороны треугольника
-* \param SecondSide Длина второй стороны треугольника
-* \param z Угол между этими сторонами
-* \return Площадь треугольника
+* \brief РќР°С…РѕРґРёС‚ РїР»РѕС‰Р°РґСЊ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°
+* \param FirstSide Р”Р»РёРЅР° РїРµСЂРІРѕР№ СЃС‚РѕСЂРѕРЅС‹ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°
+* \param SecondSide Р”Р»РёРЅР° РІС‚РѕСЂРѕР№ СЃС‚РѕСЂРѕРЅС‹ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°
+* \param z РЈРіРѕР» РјРµР¶РґСѓ СЌС‚РёРјРё СЃС‚РѕСЂРѕРЅР°РјРё
+* \return РџР»РѕС‰Р°РґСЊ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°
 */
 double getAreaOfTheTriangle(double FirstSide, double SecondSide, double z);
 
 /*
-* \brief Находит радиус описанной окружности
-* \param FirstSide Длина первой стороны треугольника
-* \param SecondSide Длина второй стороны треугольника
-* \param ThirdSide Длина третьей стороны треугольника
-* \param Area Площадь треугольника
-* \return Площадь треугольника
+* \brief РќР°С…РѕРґРёС‚ СЂР°РґРёСѓСЃ РѕРїРёСЃР°РЅРЅРѕР№ РѕРєСЂСѓР¶РЅРѕСЃС‚Рё
+* \param FirstSide Р”Р»РёРЅР° РїРµСЂРІРѕР№ СЃС‚РѕСЂРѕРЅС‹ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°
+* \param SecondSide Р”Р»РёРЅР° РІС‚РѕСЂРѕР№ СЃС‚РѕСЂРѕРЅС‹ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°
+* \param ThirdSide Р”Р»РёРЅР° С‚СЂРµС‚СЊРµР№ СЃС‚РѕСЂРѕРЅС‹ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°
+* \param Area РџР»РѕС‰Р°РґСЊ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°
+* \return РџР»РѕС‰Р°РґСЊ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°
 */
 double getRadiusOfTheCircumscribedCircle(double ThirdSide, double z);
 
+/*
+* \brief Р’С…РѕРґ РІ РїСЂРѕРіСЂР°РјРјСѓ
+* \return РІ СЃР»СѓС‡Р°Рµ СѓСЃРїРµС…Р°, РІРѕР·РІСЂР°С‰Р°РµС‚ 0
+*/
+
 int main()
 {
-	setlocale(LC_ALL, "Russian");
 	double FirstSide, SecondSide, z;
-	cout << "Длина первой стороны треугольника равна: "; cin >> FirstSide;
-	cout << "Длина второй стороны треугольника равна: "; cin >> SecondSide;
-	cout << "Угол между этими сторонами равен: "; cin >> z;
+	cout << "Length of the first side: "; cin >> FirstSide;
+	cout << "Length of the second side: "; cin >> SecondSide;
+	cout << "Angle between the sides: "; cin >> z;
 
-	double ThirdSide = getThirdSideOfTheTriangle(FirstSide, SecondSide, z);
-	double Area = getAreaOfTheTriangle(FirstSide, SecondSide, z);
-	double Radius = getRadiusOfTheCircumscribedCircle(ThirdSide, z);
+	const double ThirdSide = getThirdSideOfTheTriangle(FirstSide, SecondSide, z);
+	const double Area = getAreaOfTheTriangle(FirstSide, SecondSide, z);
+	const double Radius = getRadiusOfTheCircumscribedCircle(ThirdSide, z);
 
-	cout << "Длина третьей стороны треугольника равна: " << ThirdSide << ", Площадь треугольника равна: " << Area << ", Радиус описанной окружности равен: " << Radius;
+	cout << "Length of the third side: " << ThirdSide << ", Area of the triangle: " << Area << ", Radius of the circumscribed circle: " << Radius;
 
 	return 0;
 }
 
 double getThirdSideOfTheTriangle(double FirstSide, double SecondSide, double z)
 {
-	return sqrt(pow(FirstSide, 2) + pow(SecondSide, 2) - 2 * FirstSide * SecondSide * cos(z*M_PI/180));
+	return sqrt(pow(FirstSide, 2) + pow(SecondSide, 2) - 2 * FirstSide * SecondSide * cos(z*M_PI/180)); //РўСЂРµС‚СЊСЋ СЃС‚РѕСЂРѕРЅСѓ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР° РЅР°С…РѕРґРёРј РїРѕ С‚РµРѕСЂРµРјРµ РєРѕСЃРёРЅСѓСЃРѕРІ
 }
 
 double getAreaOfTheTriangle(double FirstSide, double SecondSide, double z)
 {
-	return FirstSide * SecondSide * sin(z*M_PI/180) / 2;
+	return FirstSide * SecondSide * sin(z*M_PI/180) / 2; //РџР»РѕС‰Р°РґСЊ РЅР°С…РѕРґРёРј СЃ РїРѕРјРѕС‰СЊСЋ С„РѕСЂРјСѓР»С‹ РїРѕР»СѓРїСЂРѕРёР·РІРµРґРµРЅРёСЏ РґРІСѓС… СЃС‚РѕСЂРѕРЅ РЅР° СЃРёРЅСѓСЃ СѓРіР»Р° РјРµР¶РґСѓ РЅРёРјРё
 }
 
 double getRadiusOfTheCircumscribedCircle(double ThirdSide, double z)
 {
-	return ThirdSide / (2 * sin(z * M_PI / 180));
+	return ThirdSide / (2 * sin(z * M_PI / 180)); //Р Р°РґРёСѓСЃ РѕРїРёСЃР°РЅРЅРѕР№ РѕРєСЂСѓР¶РЅРѕСЃС‚Рё РЅР°С…РѕРґРёС‚СЃСЏ РёР· С‚РµРѕСЂРµРјС‹ СЃРёРЅСѓСЃРѕРІ
 }
