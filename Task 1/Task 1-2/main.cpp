@@ -40,7 +40,6 @@ double getRadiusOfTheCircumscribedCircle(double ThirdSide, double z);
 * \return Угол в радианах
 */double getToRadians(double z);
 
-
 /*
 * \brief Вход в программу
 * \return в случае успеха, возвращает 0
