@@ -35,6 +35,13 @@ double getAreaOfTheTriangle(double FirstSide, double SecondSide, double z);
 double getRadiusOfTheCircumscribedCircle(double ThirdSide, double z);
 
 /*
+* \brief Переводит градусы в радианы
+* \param z Градусная мера угла
+* \return Угол в радианах
+*/double getToRadians(double z);
+
+
+/*
 * \brief Вход в программу
 * \return в случае успеха, возвращает 0
 */
@@ -46,26 +53,32 @@ int main()
 	cout << "Length of the second side: "; cin >> SecondSide;
 	cout << "Angle between the sides: "; cin >> z;
 
-	const double ThirdSide = getThirdSideOfTheTriangle(FirstSide, SecondSide, z);
-	const double Area = getAreaOfTheTriangle(FirstSide, SecondSide, z);
-	const double Radius = getRadiusOfTheCircumscribedCircle(ThirdSide, z);
+	const double Rad = getToRadians(z);
+	const double ThirdSide = getThirdSideOfTheTriangle(FirstSide, SecondSide, Rad);
+	const double Area = getAreaOfTheTriangle(FirstSide, SecondSide, Rad);
+	const double Radius = getRadiusOfTheCircumscribedCircle(ThirdSide, Rad);
 
 	cout << "Length of the third side: " << ThirdSide << ", Area of the triangle: " << Area << ", Radius of the circumscribed circle: " << Radius;
 
 	return 0;
 }
 
-double getThirdSideOfTheTriangle(double FirstSide, double SecondSide, double z)
+double getThirdSideOfTheTriangle(double FirstSide, double SecondSide, double Rad)
 {
-	return sqrt(pow(FirstSide, 2) + pow(SecondSide, 2) - 2 * FirstSide * SecondSide * cos(z*M_PI/180)); //Третью сторону треугольника находим по теореме косинусов
+	return sqrt(pow(FirstSide, 2) + pow(SecondSide, 2) - 2 * FirstSide * SecondSide * cos(Rad)); //Третью сторону треугольника находим по теореме косинусов
 }
 
-double getAreaOfTheTriangle(double FirstSide, double SecondSide, double z)
+double getAreaOfTheTriangle(double FirstSide, double SecondSide, double Rad)
 {
-	return FirstSide * SecondSide * sin(z*M_PI/180) / 2; //Площадь находим с помощью формулы полупроизведения двух сторон на синус угла между ними
+	return FirstSide * SecondSide * sin(Rad) / 2; //Площадь находим с помощью формулы полупроизведения двух сторон на синус угла между ними
 }
 
-double getRadiusOfTheCircumscribedCircle(double ThirdSide, double z)
+double getRadiusOfTheCircumscribedCircle(double ThirdSide, double Rad)
 {
-	return ThirdSide / (2 * sin(z * M_PI / 180)); //Радиус описанной окружности находится из теоремы синусов
+	return ThirdSide / (2 * sin(Rad)); //Радиус описанной окружности находится из теоремы синусов
+}
+
+double getToRadians(double z)
+{
+	return z * M_PI / 180;
 }
