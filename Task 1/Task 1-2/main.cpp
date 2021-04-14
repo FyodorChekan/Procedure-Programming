@@ -8,12 +8,12 @@ using namespace std;
 
 /*
 * \brief Находит третью сторону треугольника
-* \param firstside Длина первой стороны треугольника
+* \param firstSide Длина первой стороны треугольника
 * \param secondSide Длина второй стороны треугольника
 * \param z Угол между этими сторонами
 * \return Длина третьей стороны треугольника
 */
-double getThirdSideTriangle(double firstside, double secondside, double z);
+double getThirdSideTriangle(double firstSide, double secondSide, double z);
 
 /*
 * \brief Находит площадь треугольника
@@ -22,13 +22,13 @@ double getThirdSideTriangle(double firstside, double secondside, double z);
 * \param z Угол между этими сторонами
 * \return Площадь треугольника
 */
-double getAreaTriangle(double firstside, double secondside, double z);
+double getAreaTriangle(double firstSide, double secondSide, double z);
 
 /*
 * \brief Находит радиус описанной окружности
-* \param firstside Длина первой стороны треугольника
-* \param secondside Длина второй стороны треугольника
-* \param thirdside Длина третьей стороны треугольника
+* \param firstSide Длина первой стороны треугольника
+* \param secondSide Длина второй стороны треугольника
+* \param thirdSide Длина третьей стороны треугольника
 * \param area Площадь треугольника
 * \return Площадь треугольника
 */
@@ -47,34 +47,34 @@ double getRadiusCircumscribedCircle(double thirdside, double z);
 
 int main()
 {
-	double firstside, secondside, z;
-	cout << "Length first side: "; cin >> firstside;
-	cout << "Length second side: "; cin >> secondside;
+	double firstSide, secondSide, z;
+	cout << "Length first side: "; cin >> firstSide;
+	cout << "Length second side: "; cin >> secondSide;
 	cout << "Angle between the sides: "; cin >> z;
 
-	const double Rad = getToRadians(z);
-	const double ThirdSide = getThirdSideTriangle(firstside, secondside, Rad);
-	const double Area = getAreaTriangle(firstside, secondside, Rad);
-	const double Radius = getRadiusCircumscribedCircle(ThirdSide, Rad);
+	const double rad = getToRadians(z);
+	const double thirdSide = getThirdSideTriangle(firstSide, secondSide, rad);
+	const double area = getAreaTriangle(firstSide, secondSide, rad);
+	const double radius = getRadiusCircumscribedCircle(thirdSide, rad);
 
-	cout << "Length of the third side: " << ThirdSide << ", Area of the triangle: " << Area << ", Radius of the circumscribed circle: " << Radius;
+	cout << "Length of the third side: " << thirdSide << ", Area of the triangle: " << area << ", Radius of the circumscribed circle: " << radius;
 
 	return 0;
 }
 
-double getThirdSideTriangle(double firstside, double secondside, double Rad)
+double getThirdSideTriangle(double firstSide, double secondSide, double rad)
 {
-	return sqrt(pow(firstside, 2) + pow(secondside, 2) - 2 * firstside * secondside * cos(Rad)); //Третью сторону треугольника находим по теореме косинусов
+	return sqrt(pow(firstSide, 2) + pow(secondSide, 2) - 2 * firstSide * secondSide * cos(rad)); //Третью сторону треугольника находим по теореме косинусов
 }
 
-double getAreaTriangle(double firstside, double secondside, double Rad)
+double getAreaTriangle(double firstSide, double secondSide, double rad)
 {
-	return firstside * secondside * sin(Rad) / 2; //Площадь находим с помощью формулы полупроизведения двух сторон на синус угла между ними
+	return firstSide * secondSide * sin(rad) / 2; //Площадь находим с помощью формулы полупроизведения двух сторон на синус угла между ними
 }
 
-double getRadiusCircumscribedCircle(double ThirdSide, double Rad)
+double getRadiusCircumscribedCircle(double thirdSide, double rad)
 {
-	return ThirdSide / (2 * sin(Rad)); //Радиус описанной окружности находится из теоремы синусов
+	return thirdSide / (2 * sin(rad)); //Радиус описанной окружности находится из теоремы синусов
 }
 
 double getToRadians(double z)
