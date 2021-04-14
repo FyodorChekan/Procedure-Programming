@@ -10,19 +10,19 @@ using namespace std;
 * \brief Находит третью сторону треугольника
 * \param firstSide Длина первой стороны треугольника
 * \param secondSide Длина второй стороны треугольника
-* \param z Угол между этими сторонами
+* \param rad Угол между этими сторонами
 * \return Длина третьей стороны треугольника
 */
-double getThirdSideTriangle(double firstSide, double secondSide, double z);
+double getThirdSideTriangle(double firstSide, double secondSide, double rad);
 
 /*
 * \brief Находит площадь треугольника
 * \param firstSide Длина первой стороны треугольника
 * \param secondSide Длина второй стороны треугольника
-* \param z Угол между этими сторонами
+* \param rad Угол между этими сторонами
 * \return Площадь треугольника
 */
-double getAreaTriangle(double firstSide, double secondSide, double z);
+double getAreaTriangle(double firstSide, double secondSide, double rad);
 
 /*
 * \brief Находит радиус описанной окружности
@@ -32,13 +32,13 @@ double getAreaTriangle(double firstSide, double secondSide, double z);
 * \param area Площадь треугольника
 * \return Площадь треугольника
 */
-double getRadiusCircumscribedCircle(double thirdside, double z);
+double getRadiusCircumscribedCircle(double thirdside, double rad);
 
 /*
 * \brief Переводит градусы в радианы
-* \param z Градусная мера угла
+* \param angle Градусная мера угла
 * \return Угол в радианах
-*/double getToRadians(double z);
+*/double getToRadians(double angle);
 
 /*
 * \brief Вход в программу
@@ -47,12 +47,12 @@ double getRadiusCircumscribedCircle(double thirdside, double z);
 
 int main()
 {
-	double firstSide, secondSide, z;
+	double firstSide, secondSide, angle;
 	cout << "Length first side: "; cin >> firstSide;
 	cout << "Length second side: "; cin >> secondSide;
-	cout << "Angle between the sides: "; cin >> z;
+	cout << "Angle between the sides: "; cin >> angle;
 
-	const double rad = getToRadians(z);
+	const double rad = getToRadians(angle);
 	const double thirdSide = getThirdSideTriangle(firstSide, secondSide, rad);
 	const double area = getAreaTriangle(firstSide, secondSide, rad);
 	const double radius = getRadiusCircumscribedCircle(thirdSide, rad);
@@ -77,7 +77,7 @@ double getRadiusCircumscribedCircle(double thirdSide, double rad)
 	return thirdSide / (2 * sin(rad)); //Радиус описанной окружности находится из теоремы синусов
 }
 
-double getToRadians(double z)
+double getToRadians(double angle)
 {
-	return z * M_PI / 180; //Переводит градусы в радианы для расчета тригонометрических функций
+	return angle * M_PI / 180; //Переводит градусы в радианы для расчета тригонометрических функций
 }
