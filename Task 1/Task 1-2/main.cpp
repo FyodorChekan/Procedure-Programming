@@ -8,31 +8,31 @@ using namespace std;
 
 /*
 * \brief Находит третью сторону треугольника
-* \param FirstSide Длина первой стороны треугольника
-* \param SecondSide Длина второй стороны треугольника
+* \param firstside Длина первой стороны треугольника
+* \param secondSide Длина второй стороны треугольника
 * \param z Угол между этими сторонами
 * \return Длина третьей стороны треугольника
 */
-double getThirdSideOfTheTriangle(double FirstSide, double SecondSide, double z);
+double getThirdSideTriangle(double firstside, double secondside, double z);
 
 /*
 * \brief Находит площадь треугольника
-* \param FirstSide Длина первой стороны треугольника
-* \param SecondSide Длина второй стороны треугольника
+* \param firstSide Длина первой стороны треугольника
+* \param secondSide Длина второй стороны треугольника
 * \param z Угол между этими сторонами
 * \return Площадь треугольника
 */
-double getAreaOfTheTriangle(double FirstSide, double SecondSide, double z);
+double getAreaTriangle(double firstside, double secondside, double z);
 
 /*
 * \brief Находит радиус описанной окружности
-* \param FirstSide Длина первой стороны треугольника
-* \param SecondSide Длина второй стороны треугольника
-* \param ThirdSide Длина третьей стороны треугольника
-* \param Area Площадь треугольника
+* \param firstside Длина первой стороны треугольника
+* \param secondside Длина второй стороны треугольника
+* \param thirdside Длина третьей стороны треугольника
+* \param area Площадь треугольника
 * \return Площадь треугольника
 */
-double getRadiusOfTheCircumscribedCircle(double ThirdSide, double z);
+double getRadiusCircumscribedCircle(double thirdside, double z);
 
 /*
 * \brief Переводит градусы в радианы
@@ -47,37 +47,37 @@ double getRadiusOfTheCircumscribedCircle(double ThirdSide, double z);
 
 int main()
 {
-	double FirstSide, SecondSide, z;
-	cout << "Length of the first side: "; cin >> FirstSide;
-	cout << "Length of the second side: "; cin >> SecondSide;
+	double firstside, secondside, z;
+	cout << "Length first side: "; cin >> firstside;
+	cout << "Length second side: "; cin >> secondside;
 	cout << "Angle between the sides: "; cin >> z;
 
 	const double Rad = getToRadians(z);
-	const double ThirdSide = getThirdSideOfTheTriangle(FirstSide, SecondSide, Rad);
-	const double Area = getAreaOfTheTriangle(FirstSide, SecondSide, Rad);
-	const double Radius = getRadiusOfTheCircumscribedCircle(ThirdSide, Rad);
+	const double ThirdSide = getThirdSideTriangle(firstside, secondside, Rad);
+	const double Area = getAreaTriangle(firstside, secondside, Rad);
+	const double Radius = getRadiusCircumscribedCircle(ThirdSide, Rad);
 
 	cout << "Length of the third side: " << ThirdSide << ", Area of the triangle: " << Area << ", Radius of the circumscribed circle: " << Radius;
 
 	return 0;
 }
 
-double getThirdSideOfTheTriangle(double FirstSide, double SecondSide, double Rad)
+double getThirdSideTriangle(double firstside, double secondside, double Rad)
 {
-	return sqrt(pow(FirstSide, 2) + pow(SecondSide, 2) - 2 * FirstSide * SecondSide * cos(Rad)); //Третью сторону треугольника находим по теореме косинусов
+	return sqrt(pow(firstside, 2) + pow(secondside, 2) - 2 * firstside * secondside * cos(Rad)); //Третью сторону треугольника находим по теореме косинусов
 }
 
-double getAreaOfTheTriangle(double FirstSide, double SecondSide, double Rad)
+double getAreaTriangle(double firstside, double secondside, double Rad)
 {
-	return FirstSide * SecondSide * sin(Rad) / 2; //Площадь находим с помощью формулы полупроизведения двух сторон на синус угла между ними
+	return firstside * secondside * sin(Rad) / 2; //Площадь находим с помощью формулы полупроизведения двух сторон на синус угла между ними
 }
 
-double getRadiusOfTheCircumscribedCircle(double ThirdSide, double Rad)
+double getRadiusCircumscribedCircle(double ThirdSide, double Rad)
 {
 	return ThirdSide / (2 * sin(Rad)); //Радиус описанной окружности находится из теоремы синусов
 }
 
 double getToRadians(double z)
 {
-	return z * M_PI / 180;
+	return z * M_PI / 180; //Переводит градусы в радианы для расчета тригонометрических функций
 }
